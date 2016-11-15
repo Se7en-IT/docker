@@ -1,0 +1,26 @@
+version: '2'
+services:
+  php:
+    build: ./php
+    image: php-custom:5.6.28-apache
+    ports:
+      - "80:80"
+    volumes:
+      - ${DATA_DIR}php:/var/www/html
+    depends_on:
+      - mysql
+      - mongo
+  mysql:
+    image: mysql:5.7.16
+    ports:
+      - "3306:3306"
+    volumes:
+      - ${DATA_DIR}mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+  mongo:
+    image: mongo:3.3
+    ports:
+      - "27017:27017"
+    volumes:
+      - ${DATA_DIR}mongo:/data/db
