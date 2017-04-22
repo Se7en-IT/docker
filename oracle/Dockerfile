@@ -14,6 +14,8 @@ RUN rm instantclient-sqlplus-linux.x64-12.2.0.1.0.zip
 RUN rm instantclient-tools-linux.x64-12.2.0.1.0.zip
 RUN ln -s ./instantclient_12_2/libclntsh.so.12.1 ./instantclient_12_2/libclntsh.so
 RUN ln -s ./instantclient_12_2/libocci.so.12.1 ./instantclient_12_2/libocci.so
+RUN ln -s ./instantclient_12_2/sqlplus /bin/sqplus
+RUN ln -s ./instantclient_12_2/sqlldr /bin/sqlldr
 
 ENV LD_LIBRARY_PATH /opt/oracle/instantclient_12_2
 ENV PATH /opt/oracle/instantclient_12_2:$PATH
