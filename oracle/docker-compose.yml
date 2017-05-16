@@ -1,7 +1,7 @@
 version: '2'
 services:
   oracle:
-    build: ./oracle
+    build: .
     image: oracle/sqltools
     volumes:
       - ${DATA_DIR}:/var/opt
