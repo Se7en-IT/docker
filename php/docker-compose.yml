@@ -2,7 +2,7 @@ version: '2'
 services:
   php:
     build: .
-    image: php-custom:5.6.28-apache
+    image: php-custom:5.6.31-apache
     ports:
       - "80:80"
     volumes:
@@ -11,7 +11,7 @@ services:
       - mysql
       - mongo
   mysql:
-    image: mysql:5.7.16
+    image: mysql:5.7.19
     ports:
       - "3306:3306"
     volumes:
@@ -19,7 +19,7 @@ services:
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
   mongo:
-    image: mongo:3.3
+    image: mongo:3.4
     ports:
       - "27017:27017"
     volumes:
