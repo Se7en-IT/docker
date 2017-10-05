@@ -19,7 +19,7 @@ services:
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
   mongo:
-    image: mongo:3.4
+    image: mongo:3.5.13
     ports:
       - "27017:27017"
     volumes:
