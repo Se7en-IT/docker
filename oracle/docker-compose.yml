@@ -9,4 +9,4 @@ services:
       - DD_BASE_DIR=/var/opt
       - DD_MUPR0_USR_APP=MUPR_OWN
       - DD_MUPR0_PWD_APP=MUPR_OWN
-      - DD_MUPR0_SID=//trimtest01.iplug.it:1555/CAPGEMINI
+      - DD_MUPR0_SID=//10.24.216.117:1555/CAPGEMINI

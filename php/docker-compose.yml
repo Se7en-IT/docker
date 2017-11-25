@@ -5,13 +5,14 @@ services:
     image: php-custom:5.6.31-apache
     ports:
       - "80:80"
+      - "9000:9000"
     volumes:
       - ${DATA_DIR}php:/var/www/html
     depends_on:
       - mysql
       - mongo
   mysql:
-    image: mysql:5.7.19
+    image: mysql:5.7.20
     ports:
       - "3306:3306"
     volumes:
