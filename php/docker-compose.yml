@@ -5,6 +5,7 @@ services:
     image: php-custom:5.6.31-apache
     ports:
       - "80:80"
+      - "9000:9000"
     volumes:
       - ${DATA_DIR}php:/var/www/html
       - ./php.ini:/usr/local/etc/php/php.ini
