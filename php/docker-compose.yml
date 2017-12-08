@@ -7,7 +7,7 @@ services:
       - "80:80"
     volumes:
       - ${DATA_DIR}php:/var/www/html
-      - ./php.ini:/usr/local/etc/php/php.ini
+      - ./config/php/php.ini:/usr/local/etc/php/php.ini
     environment:
       - XDEBUG_CONFIG=remote_host=${IP}
     depends_on:
