@@ -1,8 +1,8 @@
 version: '2'
 services:
   php:
-    build: .
-    image: php-custom:5.6.31-apache
+    build: ./build
+    image: php-custom:5.6.32-apache
     ports:
       - "80:80"
     volumes:
