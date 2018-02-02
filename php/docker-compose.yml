@@ -6,7 +6,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ${DATA_DIR}php:/var/www/html
+      - ${VOLUME_DIR}php:/var/www/html
       - ./config/php/php.ini:/usr/local/etc/php/php.ini
       - ./config/apache2:/etc/apache2/sites-enabled
     environment:
@@ -19,7 +19,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ${DATA_DIR}mysql:/var/lib/mysql
+      - ${VOLUME_DIR}mysql:/var/lib/mysql
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
   mongo:
@@ -27,4 +27,4 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - ${DATA_DIR}mongo:/data/db
+      - ${VOLUME_DIR}mongo:/data/db

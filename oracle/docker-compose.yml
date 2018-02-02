@@ -4,7 +4,7 @@ services:
     build: .
     image: oracle/sqltools
     volumes:
-      - ${DATA_DIR}:/var/opt
+      - ${VOLUME_DIR}:/var/opt
     environment:
       - DD_BASE_DIR=/var/opt
       - DD_MUPR0_USR_APP=MUPR_OWN
