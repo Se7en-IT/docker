@@ -1,7 +1,8 @@
-version: '2'
+version: '3.4'
 services:
   portainer:
     image: portainer/portainer
+    restart: always
     ports:
       - "9999:9000"
     volumes:
