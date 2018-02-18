@@ -15,6 +15,8 @@ defaultEntryPoints = ["http", "https"]
 
 [web]
 address = ":8080"
+[web.auth.basic]
+users = ["admin:$apr1$1syeTmzj$R08TkQS.JgEw0PbMCFYcC/"]
 
 [docker]
 domain = "localhost"
