@@ -10,7 +10,8 @@ services:
       - 8080:8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./traefik.toml:/etc/traefik/traefik.toml
+      - ./traefik.toml:/traefik.toml
+      - ./acme.json:/acme.json
   mongo:
     image: mongo:3.5.13
     restart: always
@@ -35,6 +36,7 @@ services:
     networks:
       - net
     labels:
+      - traefik.backend=portainer
       - traefik.frontend.rule=Host:portainer.localhost
       - traefik.enable=true  
       - traefik.port=9000    
@@ -45,6 +47,7 @@ services:
     image: adminer
     restart: always
     labels:
+      - traefik.backend=adminer
       - traefik.frontend.rule=Host:adminer.localhost
       - traefik.enable=true
       - traefik.port=8080

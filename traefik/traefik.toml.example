@@ -22,7 +22,7 @@ exposedbydefault = false
 watch = true
 
 [acme]
-email = "info@lucamusolino.it"
+email = "info@email.it"
 storage = "acme.json"
 entryPoint = "https"
 OnHostRule = true
