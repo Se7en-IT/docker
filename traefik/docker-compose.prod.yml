@@ -1,0 +1,8 @@
+version: '3'
+services:
+  portainer:
+    labels:
+      - traefik.frontend.rule=Host:portainer.sitename.it
+  adminer:
+    labels:
+      - traefik.frontend.rule=Host:adminer.sitename.it
