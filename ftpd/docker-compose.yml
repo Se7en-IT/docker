@@ -1,0 +1,15 @@
+version: '3'
+services:
+  ftpd:
+    image: stilliard/pure-ftpd:hardened
+    networks:
+      - net
+    volumes:
+      - ${VOLUME_DIR}ftpd:/home/ftpusers
+    environment:
+      - PUBLICHOST=localhost
+    ports:
+      - 21:21
+      - 30000-30009:30000-30009
+networks:
+  net:

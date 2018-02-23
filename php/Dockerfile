@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
     && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_port=9000" >> /usr/local/etc/php/conf.d/xdebug.ini \
-    && echo "memory_limit=64M" >> /usr/local/etc/php/php.ini \
+    && echo "memory_limit=128M" >> /usr/local/etc/php/php.ini \
     && echo "upload_max_filesize=50M" >> /usr/local/etc/php/php.ini \
     && echo "post_max_size=50M" >> /usr/local/etc/php/php.ini \
     && a2enmod rewrite
