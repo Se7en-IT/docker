@@ -1,17 +1,5 @@
 version: '3'
 services:
-  mongo:
-    image: mongo:3.5.13
-    restart: always
-    networks:
-      - net
-    volumes:
-      - ${VOLUME_DIR}mongo:/data/db
-    ports:
-      - 27017:27017
   portainer:
     labels:
       - traefik.frontend.rule=Host:portainer.localhost
-  adminer:
-    labels:
-      - traefik.frontend.rule=Host:adminer.localhost
