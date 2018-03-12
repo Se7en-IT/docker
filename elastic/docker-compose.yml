@@ -5,8 +5,19 @@ services:
     environment:
       - discovery.type=single-node
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    networks:
+      - net
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ${VOLUME_DIR}elasticsearch:/usr/share/elasticsearch/data
   kibana:
     image: docker.elastic.co/kibana/kibana:6.2.2
+    networks:
+      - net
     ports:
       - 5601:5601
-  
+networks:
+  net:  

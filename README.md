@@ -6,3 +6,4 @@ ORACLE
 -----
 Dockerfile per usare sqlplus e sqlldr 
 
+
