@@ -11,6 +11,7 @@ services:
       - ${VOLUME_DIR}${SITE}:/var/www/html
     labels:
       - traefik.backend=wp_${SITE}
+      - traefik.frontend.rule=Host:${SITE}.${TRAEFIK_DOMAIN}
       - traefik.enable=true  
 networks:
   net:

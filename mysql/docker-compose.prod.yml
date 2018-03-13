@@ -1,5 +1,0 @@
-version: '3'
-services:
-  adminer:
-    labels:
-      - traefik.frontend.rule=Host:adminer.sitename.it

@@ -21,6 +21,7 @@ services:
     labels:
       - traefik.backend=portainer
       - traefik.enable=true  
+      - traefik.frontend.rule=Host:portainer.${TRAEFIK_DOMAIN}
       - traefik.port=9000    
     volumes:
       - ${VOLUME_DIR}portainer:/data

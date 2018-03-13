@@ -10,6 +10,7 @@ services:
     labels:
       - traefik.backend=jenkins
       - traefik.enable=true
+      - traefik.frontend.rule=Host:jenkins.${TRAEFIK_DOMAIN}
       - traefik.port=8080
     networks:
       - net
