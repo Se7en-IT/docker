@@ -1,0 +1,11 @@
+version: '3'
+services:
+  mysql:
+    image: mongo:3.6
+    restart: always
+    networks:
+      - net
+    volumes:
+      - ${VOLUME_DIR}mongo:/data/db
+networks:
+  net:
