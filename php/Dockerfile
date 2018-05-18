@@ -19,4 +19,7 @@ RUN echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "memory_limit=128M" >> /usr/local/etc/php/php.ini \
     && echo "upload_max_filesize=50M" >> /usr/local/etc/php/php.ini \
     && echo "post_max_size=50M" >> /usr/local/etc/php/php.ini \
+    && echo "log_errors=On" >> /usr/local/etc/php/php.ini \
+    && echo "error_log=/dev/stderr" >> /usr/local/etc/php/php.ini \
+    && echo "display_errors=Off" >> /usr/local/etc/php/php.ini \
     && a2enmod rewrite

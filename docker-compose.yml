@@ -1,0 +1,56 @@
+version: '3'
+services:
+  proxy:
+    image: traefik
+    restart: always
+    networks:
+      - net
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik/traefik.toml:/traefik.toml
+      - ./traefik/acme.json:/acme.json
+  portainer:
+    image: portainer/portainer
+    restart: always
+    networks:
+      - net
+    labels:
+      - traefik.backend=portainer
+      - traefik.enable=true  
+      - traefik.frontend.rule=Host:portainer.${TRAEFIK_DOMAIN}
+      - traefik.port=9000    
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${VOLUME_DIR}portainer:/data
+  mysql:
+    image: mysql:5.7.20
+    restart: always
+    networks:
+      - net
+    volumes:
+      - ${VOLUME_DIR}mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+  adminer:
+    image: adminer
+    restart: always
+    labels:
+      - traefik.backend=adminer
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:adminer.${TRAEFIK_DOMAIN}
+      - traefik.port=8080
+    networks:
+      - net
+  mongo:
+    image: mongo:3.6
+    restart: always
+    networks:
+      - net
+    volumes:
+      - ${VOLUME_DIR}mongo:/data/db
+networks:
+  net:
