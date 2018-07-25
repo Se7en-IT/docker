@@ -52,5 +52,34 @@ services:
       - net
     volumes:
       - ${VOLUME_DIR}mongo:/data/db
+  gitlab:
+    image: gitlab/gitlab-ce
+    restart: always
+    networks:
+      - net
+    volumes:
+      - ${VOLUME_DIR}gitlab/data:/var/opt/gitlab
+      - ${VOLUME_DIR}gitlab/config:/etc/gitlab
+    labels:
+      - traefik.backend=gitlab
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:gitlab.${TRAEFIK_DOMAIN}
+      - traefik.port=80
+  directus:
+    image: getdirectus/directus:6.4
+    restart: always
+    networks:
+      - net
+    environment:
+      - DIRECTUS_DB_HOST=mysql
+      - DIRECTUS_DB_PORT=3306
+      - DIRECTUS_DB_SCHEMA=directus
+      - DIRECTUS_DB_USER=root
+      - DIRECTUS_DB_PASSWORD=
+    labels:
+      - traefik.backend=directus
+      - traefik.enable=true
+      - traefik.frontend.rule=Host:directus.${TRAEFIK_DOMAIN}
+      - traefik.port=8080
 networks:
   net:
