@@ -3,8 +3,6 @@ services:
   proxy:
     image: traefik
     restart: always
-    networks:
-      - net
     ports:
       - 80:80
       - 443:443
@@ -16,8 +14,6 @@ services:
   portainer:
     image: portainer/portainer
     restart: always
-    networks:
-      - net
     labels:
       - traefik.backend=portainer
       - traefik.enable=true  
@@ -29,57 +25,20 @@ services:
   mysql:
     image: mysql:5.7.20
     restart: always
-    networks:
-      - net
     volumes:
       - ${VOLUME_DIR}mysql:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
   adminer:
-    image: adminer
+    image: adminer:4.6.2
     restart: always
     labels:
       - traefik.backend=adminer
       - traefik.enable=true
       - traefik.frontend.rule=Host:adminer.${TRAEFIK_DOMAIN}
       - traefik.port=8080
-    networks:
-      - net
   mongo:
     image: mongo:3.6
     restart: always
-    networks:
-      - net
     volumes:
       - ${VOLUME_DIR}mongo:/data/db
-  gitlab:
-    image: gitlab/gitlab-ce
-    restart: always
-    networks:
-      - net
-    volumes:
-      - ${VOLUME_DIR}gitlab/data:/var/opt/gitlab
-      - ${VOLUME_DIR}gitlab/config:/etc/gitlab
-    labels:
-      - traefik.backend=gitlab
-      - traefik.enable=true
-      - traefik.frontend.rule=Host:gitlab.${TRAEFIK_DOMAIN}
-      - traefik.port=80
-  directus:
-    image: getdirectus/directus:6.4
-    restart: always
-    networks:
-      - net
-    environment:
-      - DIRECTUS_DB_HOST=mysql
-      - DIRECTUS_DB_PORT=3306
-      - DIRECTUS_DB_SCHEMA=directus
-      - DIRECTUS_DB_USER=root
-      - DIRECTUS_DB_PASSWORD=
-    labels:
-      - traefik.backend=directus
-      - traefik.enable=true
-      - traefik.frontend.rule=Host:directus.${TRAEFIK_DOMAIN}
-      - traefik.port=8080
-networks:
-  net:
